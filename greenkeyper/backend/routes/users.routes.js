@@ -2,22 +2,64 @@ const express = require('express');
 const router = express.Router();
 const userService = require('../services/users.service');
 
-router.post('/', async (req, res) => {
+// Register
+router.post('/register', async (req, res) => {
   try {
-    const userId = await userService.registerUser(req.body);
-    res.status(201).json({ id: userId });
-  } catch (error) {
-    console.error('❌ Error in /api/users POST:', error); // ADD THIS
-    res.status(500).json({ error: error.message });         // AND THIS
+    const id = await userService.registerUser(req.body);
+    res.status(201).json({ id });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
   }
 });
 
-router.get('/:id', async (req, res) => {
+// Login
+router.post('/login', async (req, res) => {
   try {
-    const user = await userService.getUser(req.params.id);
-    res.json(user);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    const { email, password } = req.body;
+    const result = await userService.loginUser(email, password);
+    res.json(result);
+  } catch (err) {
+    res.status(401).json({ error: err.message });
+  }
+});
+
+// Logout
+router.post('/logout', async (req, res) => {
+  try {
+    const result = await userService.logoutUser();
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Get all users
+router.get('/', async (req, res) => {
+  try {
+    const users = await userService.getUsers();
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Get drivers
+router.get('/drivers', async (req, res) => {
+  try {
+    const drivers = await userService.getDrivers();
+    res.json(drivers);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Get mechanics
+router.get('/mechanics', async (req, res) => {
+  try {
+    const mechanics = await userService.getMechanics();
+    res.json(mechanics);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 });
 
