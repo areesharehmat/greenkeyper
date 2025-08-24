@@ -53,3 +53,25 @@ exports.getUserByEmail = async (email) => {
   const [rows] = await db.query("SELECT * FROM users WHERE email = ?", [email]);
   return rows[0];
 };
+
+// Update user
+exports.updateUser = async (id, user) => {
+  await db.query(
+    "UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?",
+    [user.name, user.email, user.password, id]
+  );
+  if (user.role) {
+    await db.query(
+      "UPDATE user_roles SET role = ? WHERE user_id = ?",
+      [user.role, id]
+    );
+  }
+  return { id, ...user };
+};
+
+// Delete user
+exports.deleteUser = async (id) => {
+  await db.query("DELETE FROM user_roles WHERE user_id = ?", [id]);
+  await db.query("DELETE FROM users WHERE id = ?", [id]);
+  return { message: `User ${id} deleted` };
+};

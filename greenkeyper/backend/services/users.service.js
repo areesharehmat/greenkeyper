@@ -42,3 +42,14 @@ exports.getDrivers = async () => {
 exports.getMechanics = async () => {
   return await userData.getUsersByRole('mechanic');
 };
+
+exports.updateUser = async (id, user) => {
+  if (user.password) {
+    user.password = await bcrypt.hash(user.password, 10);
+  }
+  return await userData.updateUser(id, user);
+};
+
+exports.deleteUser = async (id) => {
+  return await userData.deleteUser(id);
+};
