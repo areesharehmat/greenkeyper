@@ -10,6 +10,11 @@ exports.createVehicle = async (vehicle) => {
   }
 };
 
+// Get all vehicles
+exports.getAllVehicles = async () => {
+  return await vehicleData.getAllVehicles();
+};
+
 // Get vehicle by ID
 exports.getVehicle = async (id) => {
   try {

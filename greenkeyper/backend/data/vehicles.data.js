@@ -16,6 +16,12 @@ exports.getVehicle = async (id) => {
   return rows[0];
 };
 
+// Get all vehicles
+exports.getAllVehicles = async () => {
+  const [rows] = await db.query("SELECT * FROM vehicles");
+  return rows;
+};
+
 // Update vehicle + checklist + assignment
 exports.updateVehicle = async (id, vehicle) => {
   // Always update vehicle fields
