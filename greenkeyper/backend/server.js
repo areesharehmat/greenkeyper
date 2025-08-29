@@ -20,6 +20,9 @@ const webChecklistRoutes = require('./routes/web/checklists.routes');
 const mobileVehicleRoutes = require('./routes/mobile/vehicles.routes');
 const mobileChecklistRoutes = require('./routes/mobile/checklists.routes');
 
+const inspectionWebRoutes = require('./routes/web/inspections.routes');   // ✅ new
+const inspectionMobileRoutes = require('./routes/mobile/inspections.routes'); // ✅ new
+
 // Use routes
 app.use('/api/users', userRoutes);
 
@@ -28,6 +31,9 @@ app.use('/api/web/checklists', webChecklistRoutes);
 
 app.use('/api/mobile/vehicles', mobileVehicleRoutes);
 app.use('/api/mobile/checklists', mobileChecklistRoutes);
+
+app.use('/api/web/inspections', inspectionWebRoutes);       // ✅ new
+app.use('/api/mobile/inspections', inspectionMobileRoutes); // ✅ new
 
 // Start server
 const PORT = process.env.PORT || 3000;
