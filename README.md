@@ -6,7 +6,7 @@ This repository focuses on the **backend implementation**, providing RESTful API
 
 ---
 
-## 🚀 Features
+## Features
 
 * User authentication and role-based access (drivers/admins)
 * Digital vehicle inspection checklists (DVIR)
@@ -18,7 +18,7 @@ This repository focuses on the **backend implementation**, providing RESTful API
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 * **Backend:** Node.js, Express.js
 * **Database:** MySQL
@@ -27,7 +27,7 @@ This repository focuses on the **backend implementation**, providing RESTful API
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 GreenKeyper/
@@ -42,7 +42,7 @@ GreenKeyper/
 
 ---
 
-## ⚙️ Installation & Setup
+## Installation & Setup
 
 1. **Clone the repository**
 
@@ -78,7 +78,7 @@ The server will run on `http://localhost:3000`
 
 ---
 
-## 🔗 API Usage
+##  API Usage
 
 * APIs follow REST conventions
 * Requests and responses are in JSON format
@@ -93,7 +93,7 @@ GET  /api/inspections/:id
 
 ---
 
-## 🧠 Use Case
+## Use Case
 
 GreenKeyper is designed for:
 
@@ -105,7 +105,7 @@ It reduces paperwork, improves data accuracy, and ensures inspection history is 
 
 ---
 
-## 📌 Future Improvements
+## Future Improvements
 
 * JWT-based authentication
 * Image upload support for vehicle damage reporting
